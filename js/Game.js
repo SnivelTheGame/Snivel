@@ -15,7 +15,7 @@ define('Game',
                 ctx = field.getContext('2d');
 
                 level = new Levels(1);
-                player = new Player();
+                player = new Player(level.start);
 
                 field.addEventListener('click', onClick);
             };
@@ -25,6 +25,7 @@ define('Game',
 
                 clear();
                 drawLevel();
+                drawPlayer();
 
                 requestAnimationFrame(draw);
             }
@@ -55,6 +56,11 @@ define('Game',
                     ctx.lineWidth = 2;
                     ctx.stroke();
                 });
+            }
+
+            function drawPlayer () {
+                ctx.fillStyle="#ff6655";
+                ctx.fillRect(player.x, player.y, player.WIDTH, player.HEIGHT);
             }
         };
     }
