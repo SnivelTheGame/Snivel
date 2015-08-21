@@ -1,7 +1,7 @@
 define('Levels', function () {
     var levels = {
         '1': {
-            start: {x: 10, y: 178},
+            start: {x: 10, y: 78},
             lines: [
             [
                 [0, 200],

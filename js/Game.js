@@ -1,11 +1,12 @@
 define('Game',
-    ['Levels', 'Player'],
-    function (Levels, Player) {
+    ['Levels', 'Player', 'Vector'],
+    function (Levels, Player, Vector) {
         return function () {
             var timeLog = 0,
                 ctx,
                 level,
-                player;
+                player,
+                G = new Vector(0, 0.1);
             this.start = function () {
                 requestAnimationFrame(draw);
 
@@ -24,6 +25,7 @@ define('Game',
                 //fpsLog(timestamp);
 
                 clear();
+                processChanges();
                 drawLevel();
                 drawPlayer();
 
@@ -61,6 +63,10 @@ define('Game',
             function drawPlayer () {
                 ctx.fillStyle="#ff6655";
                 ctx.fillRect(player.x, player.y, player.WIDTH, player.HEIGHT);
+            }
+
+            function processChanges () {
+                player.applyVelocity(G);
             }
         };
     }
