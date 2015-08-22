@@ -11,9 +11,7 @@ define('Player',
             this.y = start.y;
 
             this.applyVelocity = function (v) {
-                speed.add(v);
-                Player.x += speed.x;
-                Player.y += speed.y;
+                return new Vector(speed.x + v.x + Player.x, speed.y + v.y + Player.y);
             };
         }
     }

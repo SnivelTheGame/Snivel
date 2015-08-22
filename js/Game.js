@@ -6,7 +6,7 @@ define('Game',
                 ctx,
                 level,
                 player,
-                G = new Vector(0, 0.1);
+                G = new Vector(0.01, 1);
             this.start = function () {
                 requestAnimationFrame(draw);
 
@@ -66,7 +66,49 @@ define('Game',
             }
 
             function processChanges () {
-                player.applyVelocity(G);
+                var destination = player.applyVelocity(G),
+                    collision = false;
+                level.lines.some(function(line) {
+                    var i,
+                        finish = line.length - 1,
+                        start,
+                        end,
+                        n1,
+                        m1,
+                        n2 = (player.y - destination.y)/(player.x - destination.x),
+                        m2 = player.y - player.x * n2,
+                        x,
+                        y;
+                    for (i in line) {
+                        start = line[i];
+                        if (i != finish) {
+                            end = line[+i + 1];
+                        } else {
+                            end = line[0];
+                        }
+
+                        n1 = (start[1] - end[1])/(start[0] - end[0]);
+                        m1 = start[1] - start[0] * n1;
+
+                        x = (m2-m1)/(n1-n2);
+                        y = x * n1 + m1;
+                        
+                        if (destination.x != player.x) {
+                            collision = Math.max(destination.x, player.x, x) != x && Math.min(destination.x, player.x, x) != x;
+                        } else {
+                            collision = Math.max(destination.y, player.y, y) != y && Math.min(destination.y, player.y, y) != y;
+                        }
+
+                        if (!collision) {
+                            player.x = destination.x;
+                            player.y = destination.y;
+                        } else {
+                            console.log(1);
+                        }
+                    }
+                });
+
+
             }
         };
     }
