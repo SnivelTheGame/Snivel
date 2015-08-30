@@ -1,7 +1,6 @@
-define('Player',
-    ['Vector'],
-    function (Vector) {
-        return function (start) {
+import {Vector} from '../src/Vector.js';
+
+    export function Player (start) {
             var speed = new Vector(0, 0);
             var Player = this;
             this.WIDTH = 20;
@@ -14,5 +13,3 @@ define('Player',
                 return new Vector(speed.x + v.x + Player.x, speed.y + v.y + Player.y);
             };
         }
-    }
-);

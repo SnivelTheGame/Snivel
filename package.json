@@ -1,10 +1,11 @@
 {
-    "name": "module-name",
-    "version": "10.3.1",
+    "name": "snivel",
+    "version": "0.0.0",
     "dependencies": {
         "gulp": "*",
-        "gulp-traceur": "*",
-        "gulp-sourcemaps": "*",
-        "gulp-concat": "*"
+        "gulp-shell": "*",
+        "gulp-run": "*",
+        "gulp-watch": "*",
+        "traceur-compiler": "git://github.com/google/traceur-compiler"
     }
 }

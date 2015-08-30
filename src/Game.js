@@ -1,7 +1,8 @@
-define('Game',
-    ['Levels', 'Player', 'Vector'],
-    function (Levels, Player, Vector) {
-        return function () {
+import {Levels} from '../src/Levels.js';
+import {Player} from '../src/Player.js';
+import {Vector} from '../src/Vector.js';
+
+export function Game () {
             var timeLog = 0,
                 ctx,
                 level,
@@ -110,6 +111,4 @@ define('Game',
 
 
             }
-        };
-    }
-);
+        }

@@ -1,5 +1,5 @@
-define('Vector', function () {
-    return function (x, y) {
+
+    export function Vector (x, y) {
         var Vector = this;
         this.x = x;
         this.y = y;
@@ -8,4 +8,4 @@ define('Vector', function () {
             Vector.y += v.y;
         };
     };
-});
+

@@ -1,13 +1,18 @@
 var gulp = require('gulp');
-var sourcemaps = require('gulp-sourcemaps');
-var traceur = require('gulp-traceur');
-var concat = require('gulp-concat');
+var watch = require('gulp-watch');
+var run = require('gulp-run');
 
-gulp.task('default', function () {
-    return gulp.src('js/*.js')
-        .pipe(sourcemaps.init())
-        .pipe(traceur())
-        .pipe(concat('all.js'))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('dist'));
+gulp.task('runtime', function () {
+    gulp.src('node_modules/traceur/bin/traceur.js')
+        .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('build', function () {
+    run('node_modules/traceur/traceur --out dist/core.js src/Main.js').exec();
+});
+
+gulp.task('default', ['runtime', 'build'], function () {
+    watch('src/*.js', function () {
+        run('node_modules/traceur/traceur --out dist/core.js src/Main.js').exec()
+    });
 });
