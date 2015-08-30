@@ -1,0 +1,10 @@
+{
+    "name": "module-name",
+    "version": "10.3.1",
+    "dependencies": {
+        "gulp": "*",
+        "gulp-traceur": "*",
+        "gulp-sourcemaps": "*",
+        "gulp-concat": "*"
+    }
+}
