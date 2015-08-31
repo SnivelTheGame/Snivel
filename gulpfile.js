@@ -8,11 +8,11 @@ gulp.task('runtime', function () {
 });
 
 gulp.task('build', function () {
-    run('node_modules/traceur/traceur --out dist/core.js src/Main.js').exec();
+    run('node_modules/traceur/traceur --source-maps=file --out dist/core.js src/Main.js').exec();
 });
 
 gulp.task('default', ['runtime', 'build'], function () {
     watch('src/*.js', function () {
-        run('node_modules/traceur/traceur --out dist/core.js src/Main.js').exec()
+        run('node_modules/traceur/traceur --source-maps=file --out dist/core.js src/Main.js').exec()
     });
 });

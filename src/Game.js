@@ -1,8 +1,8 @@
-import {Levels} from '../src/Levels.js';
-import {Player} from '../src/Player.js';
-import {Vector} from '../src/Vector.js';
+import Levels from '../src/Levels.js';
+import Player from '../src/Player.js';
+import Vector from '../src/Vector.js';
 
-export function Game () {
+export default function Game () {
             var timeLog = 0,
                 ctx,
                 level,
