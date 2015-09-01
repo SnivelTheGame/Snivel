@@ -1,9 +1,11 @@
-export default function (x, y) {
-    var Coordinate = this;
-    this.x = x;
-    this.y = y;
-    this.add = function (v) {
-        Coordinate.x += v.x;
-        Coordinate.y += v.y;
-    };
+export default class Coordinate {
+    constructor  (x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    add (v) {
+        this.x += v.x;
+        this.y += v.y;
+    }
 }

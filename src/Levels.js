@@ -12,7 +12,9 @@ var levels = {
     }
 };
 
-export default function (levelName) {
-    this.lines = levels[levelName].lines;
-    this.start = levels[levelName].start;
+export default class Levels {
+    constructor (levelName) {
+        this.lines = levels[levelName].lines;
+        this.start = levels[levelName].start;
+    }
 }
